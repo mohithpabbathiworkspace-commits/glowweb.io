@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GlowWeb.agency – Affordable Professional Websites</title>
+<style>
+:root{--bg:#000;--surface:#0e0e11;--text:#f5f5f7;--muted:#a1a1aa;--a:#ff7a00;--b:#ffb347;--c:#ff4d1a;--line:#26262b;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+
+:root[data-theme="light"]{--bg:#f6f7ff;--surface:#fff;--text:#12142b;--muted:#555b82;--line:#dfe2f5}
+:root[data-theme="dark"]{--bg:#000;--surface:#0e0e11;--text:#f5f5f7;--muted:#a1a1aa;--line:#26262b}
+*,*:before,*:after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.6;overflow-x:hidden}
+.orb{position:fixed;border-radius:50%;filter:blur(90px);opacity:.3;z-index:-1;animation:float 14s ease-in-out infinite}
+.o1{width:380px;height:380px;background:var(--a);top:-100px;left:-100px}
+.o2{width:320px;height:320px;background:var(--b);bottom:-80px;right:-60px;animation-delay:-5s}
+.o3{width:240px;height:240px;background:var(--c);top:45%;left:55%;animation-delay:-9s;opacity:.18}
+@keyframes float{50%{transform:translate(40px,-50px) scale(1.15)}}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;display:flex;align-items:center;justify-content:space-between;padding:14px 5vw;background:color-mix(in srgb,var(--bg) 80%,transparent);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.logo{font-weight:800;font-size:1.3rem;text-decoration:none;color:var(--text)}
+.logo span,.grad{background:linear-gradient(90deg,var(--a),var(--b),var(--c));-webkit-background-clip:text;background-clip:text;color:transparent;background-size:200%;animation:shift 6s linear infinite}
+@keyframes shift{to{background-position:200%}}
+.links{display:flex;gap:6px;flex-wrap:wrap}
+.links a{color:var(--muted);text-decoration:none;padding:8px 14px;border-radius:99px;font-size:.92rem;transition:.25s}
+.links a:hover,.links a.on{color:#000;background:linear-gradient(90deg,var(--a),var(--b))}
+.page{display:none;max-width:1100px;margin:0 auto;padding:60px 5vw 40px;animation:in .6s ease}
+.page.on{display:block}
+@keyframes in{from{opacity:0;transform:translateY(20px)}}
+h1{font-size:clamp(2.2rem,6vw,4rem);line-height:1.1;margin:.3em 0}
+h2{font-size:clamp(1.6rem,3.5vw,2.3rem);margin:0 0 .5em}
+p{color:var(--muted);max-width:62ch}
+.badge{display:inline-block;padding:6px 14px;border:1px solid var(--line);border-radius:99px;font-size:.82rem;color:var(--b);background:var(--surface)}
+.btn{display:inline-block;margin:10px 10px 0 0;padding:13px 26px;border-radius:99px;font-weight:600;text-decoration:none;color:#000;background:linear-gradient(90deg,var(--a),var(--b));box-shadow:0 8px 30px -8px var(--a);transition:.25s}
+.btn:hover{transform:translateY(-3px) scale(1.03)}
+.btn.alt{background:transparent;border:1px solid var(--line);color:var(--text);box-shadow:none}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center}
+@media(max-width:800px){.hero{grid-template-columns:1fr}}
+.chart{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:18px}
+.chart svg{width:100%;height:auto;display:block}
+.line{stroke-dasharray:900;stroke-dashoffset:900;animation:draw 3s .3s forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.pulse{animation:pulse 1.6s infinite}
+@keyframes pulse{50%{r:10;opacity:.5}}
+.ticker{overflow:hidden;border-block:1px solid var(--line);background:var(--surface);margin:40px 0;white-space:nowrap}
+.track{display:inline-block;padding:14px 0;animation:tick 28s linear infinite}
+.ticker:hover .track{animation-play-state:paused}
+.track span{margin:0 28px;font-weight:600;font-size:.95rem}
+.up{color:#22c55e}
+@keyframes tick{to{transform:translateX(-50%)}}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px;margin-top:24px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:24px;transition:.3s}
+.card:hover{transform:translateY(-6px);border-color:var(--a);box-shadow:0 18px 40px -18px var(--a)}
+.card .ic{font-size:1.8rem}
+.card h3{margin:.4em 0 .2em}
+.card p{margin:0;font-size:.95rem}
+.card a{color:var(--b);text-decoration:none;word-break:break-word}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px;margin:50px 0}
+.stat{text-align:center;padding:22px;border-radius:18px;background:var(--surface);border:1px solid var(--line)}
+.stat b{font-size:2.3rem;display:block}
+.rv{opacity:0;transform:translateY(40px);transition:opacity .8s,transform .8s}
+.rv.show{opacity:1;transform:none}
+.tl{border-left:2px solid var(--line);margin:30px 0 0 8px;padding-left:26px}
+.tl div{position:relative;margin-bottom:28px}
+.tl div:before{content:"";position:absolute;left:-35px;top:6px;width:16px;height:16px;border-radius:50%;background:linear-gradient(var(--a),var(--b));box-shadow:0 0 14px var(--a)}
+.tl h3{margin:0}
+.cta{margin-top:40px;padding:34px;border-radius:22px;background:linear-gradient(135deg,color-mix(in srgb,var(--a) 25%,var(--surface)),color-mix(in srgb,var(--b) 18%,var(--surface)));border:1px solid var(--line)}
+footer{text-align:center;padding:30px 5vw;border-top:1px solid var(--line);color:var(--muted);font-size:.88rem}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div>
+<nav>
+  <a class="logo" href="#home">Glow<span>Web</span>.agency</a>
+  <div class="links">
+    <a href="#home">Home</a><a href="#about">About Us</a><a href="#contact">Contact</a><a href="#join">Join the Startup</a>
+  </div>
+</nav>
+
+<!-- HOME -->
+<main class="page" id="home">
+  <div class="hero">
+    <div>
+      <span class="badge">🚀 A new startup • Est. 2025</span>
+      <h1>Professional websites at <span class="grad">very affordable</span> prices.</h1>
+      <p>GlowWeb.agency builds clean, modern, professional websites for a fraction of the usual cost. Our team of professionals designs it, builds it, and even hosts it for you.</p>
+      <a class="btn" href="#contact">Get your website</a><a class="btn alt" href="#about">Our story</a>
+    </div>
+    <div class="chart">
+      <small style="color:var(--muted)">Your growth with a GlowWeb site</small>
+      <svg viewBox="0 0 400 220" aria-hidden="true">
+        <defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#ff7a00"/><stop offset="1" stop-color="#ffb347"/></linearGradient></defs>
+        <g stroke="currentColor" opacity=".12"><path d="M0 50H400M0 100H400M0 150H400M0 200H400"/></g>
+        <path class="line" d="M10 190 L60 160 L110 175 L160 110 L210 130 L260 70 L310 85 L390 20" fill="none" stroke="url(#g)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle class="pulse" cx="390" cy="20" r="7" fill="#ff7a00"/>
+      </svg>
+    </div>
+  </div>
+
+  <div class="ticker"><div class="track" id="trk"></div></div>
+
+  <h2 class="rv">What we offer</h2>
+  <div class="grid">
+    <div class="card rv"><div class="ic">💸</div><h3>Very affordable</h3><p>We charge only a little, so everyone can afford a website.</p></div>
+    <div class="card rv"><div class="ic">✨</div><h3>Professional look</h3><p>Sleek, modern designs built by professionals that earn trust.</p></div>
+    <div class="card rv"><div class="ic">⚡</div><h3>Good, fast websites</h3><p>Well-coded, responsive and quick on every device.</p></div>
+    <div class="card rv"><div class="ic">☁️</div><h3>Hosting &amp; more</h3><p>We also handle hosting and the extras, so you don't have to.</p></div>
+  </div>
+
+  <div class="stats">
+    <div class="stat rv"><b class="grad" data-n="100">0</b>% professional</div>
+    <div class="stat rv"><b class="grad" data-n="24">0</b>/7 support mindset</div>
+    <div class="stat rv"><b class="grad" data-n="2025">0</b>founded</div>
+    <div class="stat rv"><b class="grad" data-n="2">0</b>founders</div>
+  </div>
+</main>
+
+<!-- ABOUT -->
+<main class="page" id="about">
+  <span class="badge">About us</span>
+  <h1>An innovative startup built by <span class="grad">two inspiring people</span>.</h1>
+  <p>GlowWeb.agency is an innovative startup founded in 2025 by two inspirational founders. Along the way we faced many challenges, from learning to design websites to writing code and figuring out everything in between, and we pushed through every one of them.</p>
+  <div class="tl">
+    <div class="rv"><h3>2025 – The beginning</h3><p>Two founders, one idea: professional websites shouldn't be expensive.</p></div>
+    <div class="rv"><h3>The challenges</h3><p>Building websites, coding, and learning everything from scratch.</p></div>
+    <div class="rv"><h3>The success</h3><p>We got through it all and succeeded together.</p></div>
+    <div class="rv"><h3>Today</h3><p>We sell affordable websites so everyone can have a professional online presence at a lower cost.</p></div>
+  </div>
+  <div class="grid">
+    <div class="card rv"><div class="ic">🎯</div><h3>Our mission</h3><p>A professional website for everyone, at a price anyone can afford.</p></div>
+    <div class="card rv"><div class="ic">🤝</div><h3>Collaboration</h3><p>We collaborate with smileindia.ngo to make a wider impact.</p></div>
+  </div>
+</main>
+
+<!-- CONTACT -->
+<main class="page" id="contact">
+  <span class="badge">Contact us</span>
+  <h1>Let's build your <span class="grad">website</span>.</h1>
+  <p>Reach us any way you like. Mail us directly, or simply DM us on Instagram.</p>
+  <div class="grid">
+    <div class="card rv"><div class="ic">📞</div><h3>Call us</h3><p><a href="tel:+919492921424">9492921424</a><br><a href="tel:+919676265433">9676265433</a></p></div>
+    <div class="card rv"><div class="ic">💬</div><h3>WhatsApp</h3><p><a href="https://wa.me/919492921424" target="_blank" rel="noopener">9492921424</a></p></div>
+    <div class="card rv"><div class="ic">✉️</div><h3>Email us directly</h3><p><a href="mailto:mohithpabbathi.workspace@gmail.com">mohithpabbathi.workspace@gmail.com</a></p></div>
+    <div class="card rv"><div class="ic">📸</div><h3>Instagram (main)</h3><p><a href="https://instagram.com/glowweb.io" target="_blank" rel="noopener">@glowweb.io</a><br>DM us directly!</p></div>
+    <div class="card rv"><div class="ic">💛</div><h3>Our collaboration</h3><p><a href="https://instagram.com/smileindia.ngo" target="_blank" rel="noopener">@smileindia.ngo</a><br>We work together with them.</p></div>
+  </div>
+</main>
+
+<!-- JOIN -->
+<main class="page" id="join">
+  <span class="badge">Join the startup</span>
+  <h1>Join us in this <span class="grad">startup</span>.</h1>
+  <p>Want to be part of GlowWeb.agency? If you'd like to join our startup, or you have a company and want to collaborate with us, just DM us directly and we'll get talking.</p>
+  <div class="cta rv">
+    <h2>Have a company or an idea?</h2>
+    <p>Let's collaborate. Send us a DM on Instagram and tell us how you'd like to work together.</p>
+    <a class="btn" href="https://instagram.com/glowweb.io" target="_blank" rel="noopener">DM @glowweb.io</a>
+    <a class="btn alt" href="mailto:mohithpabbathi.workspace@gmail.com">Or email us</a>
+  </div>
+  <div class="grid">
+    <div class="card rv"><div class="ic">🚀</div><h3>Grow with us</h3><p>Be part of a young startup from the early days.</p></div>
+    <div class="card rv"><div class="ic">🏢</div><h3>Company collaborations</h3><p>Own a business? Let's team up.</p></div>
+    <div class="card rv"><div class="ic">💡</div><h3>Bring your skills</h3><p>Design, code or marketing, we'd love to hear from you.</p></div>
+  </div>
+</main>
+
+<footer>© 2025 GlowWeb.agency, a startup company. All rights reserved.</footer>
+
+<script>
+const items=["GLOW ▲ Affordable Websites","HOSTING ▲ Included","DESIGN ▲ Professional","SPEED ▲ Fast","SUPPORT ▲ Always","STARTUP ▲ 2025","PRICE ▼ Low","QUALITY ▲ High"];
+const h=items.map(t=>{const [a,b]=t.split(" ");return`<span>${a} <span class="${t.includes("▼")?"":"up"}" style="margin:0">${t.slice(a.length+1)}</span></span>`}).join("");
+document.getElementById("trk").innerHTML=h+h;
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("show");const n=e.target.querySelector("[data-n]");if(n&&!n.d){n.d=1;const T=+n.dataset.n;let i=0;const s=T/50;const t=setInterval(()=>{i+=s;if(i>=T){i=T;clearInterval(t)}n.textContent=Math.round(i)},25)}}}),{threshold:.15});
+function route(){
+  const id=(location.hash||"#home").slice(1);
+  const cur=document.getElementById(id)?id:"home";
+  document.querySelectorAll(".page").forEach(p=>p.classList.toggle("on",p.id===cur));
+  document.querySelectorAll(".links a").forEach(a=>a.classList.toggle("on",a.getAttribute("href")==="#"+cur));
+  window.scrollTo(0,0);
+  document.querySelectorAll("#"+cur+" .rv").forEach(el=>{el.classList.remove("show");io.observe(el)});
+}
+addEventListener("hashchange",route);route();
+</script>
+</body>
+</html>
